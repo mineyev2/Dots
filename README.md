@@ -1,2 +1,2 @@
 # Dots
-Project: Code game dev group 4
+Project: Code Game Dev Group 4
