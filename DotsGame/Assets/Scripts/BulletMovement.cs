@@ -7,15 +7,19 @@ public class BulletMovement : MonoBehaviour
 	GameObject player;
 	GameObject mousePointer;
 
-    float speed = 5f;
+    float speed = 100f;
 
 
     float angle;
 
     float xMove;
     float yMove;
-	// Start is called before the first frame update
-	void Start()
+    // Start is called before the first frame update
+
+
+    Vector2 mPrevPos;
+
+    void Start()
 	{
         //Debug.Log("hello");
         player = GameObject.Find("Dot");
@@ -29,13 +33,15 @@ public class BulletMovement : MonoBehaviour
         xMove = Mathf.Cos(angle) * speed * Time.deltaTime;
         yMove = Mathf.Sin(angle) * speed * Time.deltaTime;
 
+     
+
         if (xDistance < 0)
         {
             xMove = -xMove;
             yMove = -yMove;
         }
 
-
+        
 
 
     }
@@ -44,8 +50,21 @@ public class BulletMovement : MonoBehaviour
     void Update()
     {
         transform.Translate(xMove, yMove, 0);
+        mPrevPos = new Vector2(transform.position.x, transform.position.y);
+
+        //doesnt work with edge collider; only box colliders
+        RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, transform.position.y), (new Vector2(transform.position.x, transform.position.y) - mPrevPos).normalized, Mathf.Infinity);
+        for (int i = 0; i < hits.Length; i++)
+        {
+            Debug.Log(hits[i].collider.gameObject.name);
+            if (hits[i].collider.gameObject.name == "MapEdges")
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
+    /*
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Debug.Log("testing");
@@ -56,4 +75,5 @@ public class BulletMovement : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    */
 }
