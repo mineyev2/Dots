@@ -5,6 +5,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
+    public GameObject Enemy1;
+
+    int level = 1;
+    float time;
 
     void Awake()
     {
@@ -22,11 +26,18 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Debug.Log("gameManager created");
+        time = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Time.time - time > 2)
+        {
+            int x = Random.Range(-10,10);
+            int y = Random.Range(-10,10);
+            Instantiate(Enemy1, new Vector2(x,y), Quaternion.identity);
+            time = Time.time;
+        }
     }
 }

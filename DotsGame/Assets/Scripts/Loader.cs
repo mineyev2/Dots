@@ -14,4 +14,9 @@ public class Loader : MonoBehaviour
             Instantiate(gameManager);
         DontDestroyOnLoad(gameObject);
     }
+
+    private void Update()
+    {
+        
+    }
 }
