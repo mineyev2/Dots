@@ -52,7 +52,7 @@ public class BulletMovement : MonoBehaviour
         //Debug.Log(collision.gameObject.name);
         if (collision.gameObject.name == "MapEdges")
         {
-            Debug.Log("collided, and deleting");
+            //Debug.Log("collided, and deleting");
             Destroy(gameObject);
         }
     }
