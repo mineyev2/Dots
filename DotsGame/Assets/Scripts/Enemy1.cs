@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy1 : MonoBehaviour
 {
     GameObject player;
-    public float speed = 15f;
+    public float speed = 20f;
     // Start is called before the first frame update
     Vector2 move;
     void Start()
@@ -19,6 +19,12 @@ public class Enemy1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log("Enemy");
         transform.Translate(move * Time.deltaTime * speed);
+    }
+
+    public void DestroyEnemy()
+    {
+        Destroy(gameObject);
     }
 }

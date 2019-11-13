@@ -7,7 +7,7 @@ public class BulletMovement : MonoBehaviour
 	GameObject player;
 	GameObject mousePointer;
 
-    float speed = 100f;
+    float speed = 20f;
 
     float angle;
 
@@ -58,11 +58,14 @@ public class BulletMovement : MonoBehaviour
         RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, transform.position.y), (new Vector2(transform.position.x, transform.position.y) - mPrevPos).normalized, (new Vector2(transform.position.x, transform.position.y) - mPrevPos).magnitude);
         for (int i = 0; i < hits.Length; i++)
         {
-            Debug.Log(hits[i].collider.gameObject.name);
+            //Debug.Log(hits[i].collider.gameObject.name);
             if (hits[i].collider.gameObject.tag == "Map")
             {
-                Debug.Log("destroying");
                 Destroy(gameObject);
+            } else if (hits[i].collider.gameObject.tag == "Enemy")
+            {
+                //gameObject.SendMessage("DestroyEnemy");
+                Destroy(hits[i].collider.gameObject);
             }
         }
         mPrevPos = new Vector2(transform.position.x, transform.position.y);
