@@ -20,35 +20,10 @@ public class BulletMovement : MovingObject
         Vector2 direction = mousePointer.transform.position - player.transform.position;
         move = direction.normalized;
 
-
         mPrevPos = new Vector2(transform.position.x, transform.position.y);
 
         player = GameObject.FindGameObjectWithTag("Player");
         mousePointer = GameObject.FindGameObjectWithTag("Pointer");
-
-        /*
-        float xDistance = mousePointer.transform.position.x - player.transform.position.x;
-        float yDistance = mousePointer.transform.position.y - player.transform.position.y;
-
-        //edit this bullshit cuz its ugly and i can do better
-        angle = Mathf.Atan(yDistance / xDistance);
-
-        xMove = Mathf.Cos(angle) * speed * Time.deltaTime;
-        yMove = Mathf.Sin(angle) * speed * Time.deltaTime;
-
-     
-
-        if (xDistance < 0)
-        {
-            xMove = -xMove;
-            yMove = -yMove;
-        }
-        */
-
-
-        
-
-
     }
 
     // Update is called once per frame
