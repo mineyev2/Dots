@@ -29,22 +29,22 @@ public class GameManager : MonoBehaviour
         Debug.Log("gameManager created");
         time = Time.time;
 
-        int x = Random.Range(-30, 30);
-        int y = Random.Range(-30, 30);
-        Instantiate(Enemy2, new Vector2(x, y), Quaternion.identity);
+        //int x = Random.Range(-30, 30);
+        //int y = Random.Range(-30, 30);
+        //Instantiate(Enemy2, new Vector2(x, y), Quaternion.identity);
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*
-        if (Time.time - time > 0.1)
+        
+        if (Time.time - time > 0.3)
         {
             int x = Random.Range(-30,30);
             int y = Random.Range(-30,30);
             Instantiate(Enemy2, new Vector2(x,y), Quaternion.identity);
             time = Time.time;
         }
-        */
+        
     }
 }
