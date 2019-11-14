@@ -11,18 +11,29 @@ public class PlayerMovement : MonoBehaviour
     //public Transform mousePointer;
 
     Vector2 movement;
-    // Update is called once per frame
 
+    public float shootInterval = 0.3f;
+    float time;
+    // Update is called once per frame
+    private void Start()
+    {
+        time = Time.time;
+    }
     void Update()
     {
-
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
-            Shoot();
+            if (Time.time - time > shootInterval)
+            {
+                Shoot();
+                time = Time.time;
+            }
         }
+
+
 
     }
 

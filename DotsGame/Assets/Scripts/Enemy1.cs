@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy1 : MonoBehaviour
+public class Enemy1 : Enemy
 {
     GameObject player;
-    public float speed = 20f;
     // Start is called before the first frame update
     Vector2 move;
     void Start()
     {
+        speed = 20f;
         player = GameObject.FindGameObjectWithTag("Player");
         Vector2 direction = player.transform.position - transform.position;
         float magnitude = direction.magnitude;

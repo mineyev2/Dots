@@ -309,6 +309,7 @@ MonoBehaviour:
   rd: {fileID: 715887950}
   bulletPrefab: {fileID: 1221392568543989485, guid: 3f3f5fc2203534651a87571df8deed7b,
     type: 3}
+  shootInterval: 0.2
 --- !u!50 &715887950
 Rigidbody2D:
   serializedVersion: 4

@@ -2,29 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletMovement : MonoBehaviour
+public class BulletMovement : MovingObject
 {
-	GameObject player;
 	GameObject mousePointer;
-
-    float speed = 20f;
-
-    float angle;
-
-    float xMove;
-    float yMove;
+    GameObject player;
     // Start is called before the first frame update
-
 
     Vector2 mPrevPos;
 
+    Vector2 move;
+
     void Start()
 	{
+        speed = 50f;
+        mousePointer = GameObject.FindGameObjectWithTag("Pointer");
+        player = GameObject.FindGameObjectWithTag("Player");
+        Vector2 direction = mousePointer.transform.position - player.transform.position;
+        move = direction.normalized;
+
+
         mPrevPos = new Vector2(transform.position.x, transform.position.y);
 
         player = GameObject.FindGameObjectWithTag("Player");
         mousePointer = GameObject.FindGameObjectWithTag("Pointer");
 
+        /*
         float xDistance = mousePointer.transform.position.x - player.transform.position.x;
         float yDistance = mousePointer.transform.position.y - player.transform.position.y;
 
@@ -41,6 +43,8 @@ public class BulletMovement : MonoBehaviour
             xMove = -xMove;
             yMove = -yMove;
         }
+        */
+
 
         
 
@@ -50,9 +54,10 @@ public class BulletMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(xMove, yMove, 0);
+        //transform.Translate(xMove, yMove, 0);
+        transform.Translate(move * Time.deltaTime * speed);
 
-        Debug.DrawLine(new Vector2(transform.position.x, transform.position.y), mPrevPos, Color.green, 2);
+        //Debug.DrawLine(new Vector2(transform.position.x, transform.position.y), mPrevPos, Color.green, 2);
 
         //doesnt work with edge collider; only box colliders
         RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, transform.position.y), (new Vector2(transform.position.x, transform.position.y) - mPrevPos).normalized, (new Vector2(transform.position.x, transform.position.y) - mPrevPos).magnitude);

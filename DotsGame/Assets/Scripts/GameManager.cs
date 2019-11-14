@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
     public GameObject Enemy1;
+    public GameObject Enemy2;
 
     public int level = 1;
     float time;
@@ -27,17 +28,23 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("gameManager created");
         time = Time.time;
+
+        int x = Random.Range(-30, 30);
+        int y = Random.Range(-30, 30);
+        Instantiate(Enemy2, new Vector2(x, y), Quaternion.identity);
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Time.time - time > 0.1)
         {
             int x = Random.Range(-30,30);
             int y = Random.Range(-30,30);
-            Instantiate(Enemy1, new Vector2(x,y), Quaternion.identity);
+            Instantiate(Enemy2, new Vector2(x,y), Quaternion.identity);
             time = Time.time;
         }
+        */
     }
 }
