@@ -16,9 +16,4 @@ public abstract class MovingObject : MonoBehaviour
     {
         
     }
-
-    void checkForBoundary()
-    {
-
-    }
 }
